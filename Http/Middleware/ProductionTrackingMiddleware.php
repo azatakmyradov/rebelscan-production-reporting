@@ -14,8 +14,6 @@ class ProductionTrackingMiddleware extends ModuleMiddleware
      * Module name
      *
      * This is used to register the module name in the app container
-     *
-     * @var string
      */
     protected string $moduleName = 'ProductionTracking';
 

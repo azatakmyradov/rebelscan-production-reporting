@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\ProductionTracking\Providers;
 
 use App\Providers\BaseServiceProvider;
@@ -13,18 +15,16 @@ class ProductionTrackingServiceProvider extends BaseServiceProvider
 
     public function boot(): void
     {
-        $this->loadMigrationsFrom(__DIR__ . '/../Migrations');
+        $this->loadMigrationsFrom(__DIR__.'/../Migrations');
 
         $this->app->register(RouteServiceProvider::class);
     }
-
 
     /**
      * Load the translations
      */
     public function loadTranslations(): void
     {
-        $this->loadJsonTranslationsFrom(__DIR__ . '/../lang');
+        $this->loadJsonTranslationsFrom(__DIR__.'/../lang');
     }
 }
-
