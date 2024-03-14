@@ -44,7 +44,7 @@ class ProductionReportingController extends Controller
 
         back()
             ->with([
-                'message' => 'Production Reporting submitted'
+                'message' => 'Production Reporting submitted',
             ]);
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\ProductionReporting\DTO;
 
 class WorkOrderLineDTO
@@ -23,18 +25,18 @@ class WorkOrderLineDTO
     public static function fromArray(array $data, string $prefix = ''): self
     {
         return new self(
-            MFGNUM: $data[$prefix . 'MFGNUM'],
-            MFGLIN: $data[$prefix . 'MFGLIN'],
-            MFGSTA: $data[$prefix . 'MFGSTA'],
-            MFGFCY: $data[$prefix . 'MFGFCY'],
-            STRDAT: $data[$prefix . 'STRDAT'],
-            ENDDAT: $data[$prefix . 'ENDDAT'],
-            STU: $data[$prefix . 'STU'],
-            EXTQTY: $data[$prefix . 'EXTQTY'],
-            CPLQTY: $data[$prefix . 'CPLQTY'],
-            ITMREF: $data[$prefix . 'ITMREF'],
-            LOT: $data[$prefix . 'LOT'],
-            TEXTE: $data[$prefix . 'TEXTE'],
+            MFGNUM: $data[$prefix.'MFGNUM'],
+            MFGLIN: $data[$prefix.'MFGLIN'],
+            MFGSTA: $data[$prefix.'MFGSTA'],
+            MFGFCY: $data[$prefix.'MFGFCY'],
+            STRDAT: $data[$prefix.'STRDAT'],
+            ENDDAT: $data[$prefix.'ENDDAT'],
+            STU: $data[$prefix.'STU'],
+            EXTQTY: $data[$prefix.'EXTQTY'],
+            CPLQTY: $data[$prefix.'CPLQTY'],
+            ITMREF: $data[$prefix.'ITMREF'],
+            LOT: $data[$prefix.'LOT'],
+            TEXTE: $data[$prefix.'TEXTE'],
         );
     }
 

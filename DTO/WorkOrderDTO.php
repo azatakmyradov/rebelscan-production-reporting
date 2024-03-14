@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\ProductionReporting\DTO;
 
 class WorkOrderDTO
@@ -12,14 +14,14 @@ class WorkOrderDTO
     public static function fromArray(array $data, string $prefix = ''): self
     {
         return new self(
-            MFGNUM: $data[$prefix . 'MFGNUM']
+            MFGNUM: $data[$prefix.'MFGNUM']
         );
     }
 
     public function toArray(): array
     {
         return [
-            'MFGNUM' => $this->MFGNUM
+            'MFGNUM' => $this->MFGNUM,
         ];
     }
 }

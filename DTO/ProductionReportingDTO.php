@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\ProductionReporting\DTO;
 
 class ProductionReportingDTO
@@ -20,30 +22,30 @@ class ProductionReportingDTO
     public static function fromArray(array $attributes, string $prefix = ''): self
     {
         return new self(
-            MFGNUM: $attributes[$prefix . 'MFGNUM'],
-            UOM: $attributes[$prefix . 'UOM'],
-            QTY: $attributes[$prefix . 'QTY'],
-            MVTDES: $attributes[$prefix . 'MVTDES'],
-            ITMREF: $attributes[$prefix . 'ITMREF'],
-            LOT: $attributes[$prefix . 'LOT'] ?? null,
-            SLO: $attributes[$prefix . 'SLO'] ?? null,
-            SERNUM: $attributes[$prefix . 'SERNUM'] ?? null,
-            PALNUM: $attributes[$prefix . 'PALNUM'] ?? null
+            MFGNUM: $attributes[$prefix.'MFGNUM'],
+            UOM: $attributes[$prefix.'UOM'],
+            QTY: $attributes[$prefix.'QTY'],
+            MVTDES: $attributes[$prefix.'MVTDES'],
+            ITMREF: $attributes[$prefix.'ITMREF'],
+            LOT: $attributes[$prefix.'LOT'] ?? null,
+            SLO: $attributes[$prefix.'SLO'] ?? null,
+            SERNUM: $attributes[$prefix.'SERNUM'] ?? null,
+            PALNUM: $attributes[$prefix.'PALNUM'] ?? null
         );
     }
 
     public function toArray(string $prefix = ''): array
     {
         return [
-            $prefix . 'MFGNUM' => $this->MFGNUM,
-            $prefix . 'UOM' => $this->UOM,
-            $prefix . 'QTY' => $this->QTY,
-            $prefix . 'MVTDES' => $this->MVTDES ?? '',
-            $prefix . 'ITMREF' => $this->ITMREF,
-            $prefix . 'LOT' => $this->LOT ?? '',
-            $prefix . 'SLO' => $this->SLO ?? '',
-            $prefix . 'SERNUM' => $this->SERNUM ?? '',
-            $prefix . 'PALNUM' => $this->PALNUM ?? '',
+            $prefix.'MFGNUM' => $this->MFGNUM,
+            $prefix.'UOM' => $this->UOM,
+            $prefix.'QTY' => $this->QTY,
+            $prefix.'MVTDES' => $this->MVTDES ?? '',
+            $prefix.'ITMREF' => $this->ITMREF,
+            $prefix.'LOT' => $this->LOT ?? '',
+            $prefix.'SLO' => $this->SLO ?? '',
+            $prefix.'SERNUM' => $this->SERNUM ?? '',
+            $prefix.'PALNUM' => $this->PALNUM ?? '',
         ];
     }
 }

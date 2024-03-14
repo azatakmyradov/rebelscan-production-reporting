@@ -14,7 +14,7 @@ class RouteServiceProvider extends BaseServiceProvider
     {
         $this->routes(function () {
             Route::middleware(['web', 'auth', 'soap', ProductionReportingMiddleware::class])
-                ->group(__DIR__ . '/../routes.php');
+                ->group(__DIR__.'/../routes.php');
         });
     }
 }

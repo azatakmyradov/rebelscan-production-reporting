@@ -15,7 +15,7 @@ class ProductionReportingServiceProvider extends BaseServiceProvider
 
     public function boot(): void
     {
-        $this->loadMigrationsFrom(__DIR__ . '/../Migrations');
+        $this->loadMigrationsFrom(__DIR__.'/../Migrations');
 
         $this->app->register(RouteServiceProvider::class);
 
@@ -33,6 +33,6 @@ class ProductionReportingServiceProvider extends BaseServiceProvider
      */
     public function loadTranslations(): void
     {
-        $this->loadJsonTranslationsFrom(__DIR__ . '/../lang');
+        $this->loadJsonTranslationsFrom(__DIR__.'/../lang');
     }
 }
