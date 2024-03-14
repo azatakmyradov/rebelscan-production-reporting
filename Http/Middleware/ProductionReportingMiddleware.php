@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace Modules\ProductionTracking\Http\Middleware;
+namespace Modules\ProductionReporting\Http\Middleware;
 
 use App\Http\Middleware\ModuleMiddleware;
 use Illuminate\Http\Request;
-use Modules\ProductionTracking\Providers\ProductionTrackingServiceProvider;
+use Modules\ProductionReporting\Providers\ProductionReportingServiceProvider;
 
-class ProductionTrackingMiddleware extends ModuleMiddleware
+class ProductionReportingMiddleware extends ModuleMiddleware
 {
     /**
      * Module name
      *
      * This is used to register the module name in the app container
      */
-    protected string $moduleName = 'ProductionTracking';
+    protected string $moduleName = 'ProductionReporting';
 
     /**
      * Handle the middleware
@@ -23,7 +23,7 @@ class ProductionTrackingMiddleware extends ModuleMiddleware
     public function handle(Request $request, $next): mixed
     {
         // [Load translations]
-        $provider = app()->resolveProvider(ProductionTrackingServiceProvider::class);
+        $provider = app()->resolveProvider(ProductionReportingServiceProvider::class);
         $provider->loadTranslations();
 
         // [Register app name]

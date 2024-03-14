@@ -2,7 +2,28 @@
 
 declare(strict_types=1);
 
-use Illuminate\Support\Facades\Route;
-use Modules\ProductionTracking\Http\Controllers\ProductionTrackingController;
+namespace Modules\ProductionReporting;
 
-Route::get('/production-tracking', [ProductionTrackingController::class, 'index']);
+use Illuminate\Support\Facades\Route;
+use Modules\ProductionReporting\Http\Controllers\ProductionReportingController;
+use Modules\ProductionReporting\Http\Controllers\WorkOrderController;
+
+/*
+|--------------------------------------------------------------------------
+| Production Tracking
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/production-reporting', [ProductionReportingController::class, 'index'])
+    ->name('production-reporting.index');
+
+Route::post('/production-reporting', [ProductionReportingController::class, 'store'])
+    ->name('production-reporting.store');
+
+/*
+|--------------------------------------------------------------------------
+| Work Orders
+|--------------------------------------------------------------------------
+*/
+Route::get('/work-orders/{workOrder}', [WorkOrderController::class, 'show'])
+    ->name('work-orders.show');
