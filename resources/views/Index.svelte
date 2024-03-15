@@ -72,13 +72,7 @@
                     return;
                 }
 
-                if (lines.length === 1) {
-                    current_line = lines[0] ?? null;
-
-                    tick().then(() => {
-                        focusOnQuantity();
-                    });
-                }
+                selectLineIfOnlyOne();
             })
             .catch(() => {
                 toast.error('Failed to load work order');
@@ -99,13 +93,20 @@
     }
 
     function resetForm() {
+        lines = lines.filter((line) => line.MFGLIN !== current_line?.MFGLIN);
+        let MFGNUM = $form.MFGNUM;
+
         $form.reset();
-        if (lines.length === 1) {
-            current_line = null;
-            lines = [];
-        }
+
+        current_line = null;
         quantity_verified = false;
         ready_to_submit = false;
+
+        if (lines.length) {
+            $form.MFGNUM = MFGNUM;
+
+            selectLineIfOnlyOne();
+        }
     }
 
     $: {
@@ -117,6 +118,16 @@
     }
 
     let focusOnQuantity: () => void;
+
+    function selectLineIfOnlyOne() {
+        if (lines.length !== 1) return;
+
+        current_line = lines[0] ?? null;
+
+        tick().then(() => {
+            focusOnQuantity();
+        });
+    }
 </script>
 
 <svelte:head>
