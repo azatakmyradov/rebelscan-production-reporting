@@ -74,11 +74,11 @@
 
                 if (lines.length === 1) {
                     current_line = lines[0] ?? null;
-                }
 
-                tick().then(() => {
-                    focusOnQuantity();
-                });
+                    tick().then(() => {
+                        focusOnQuantity();
+                    });
+                }
             })
             .catch(() => {
                 toast.error('Failed to load work order');
@@ -100,8 +100,10 @@
 
     function resetForm() {
         $form.reset();
-        current_line = null;
-        lines = [];
+        if (lines.length === 1) {
+            current_line = null;
+            lines = [];
+        }
         quantity_verified = false;
         ready_to_submit = false;
     }
@@ -131,6 +133,9 @@
     <Cards>
         <Card>
             {#if current_line}
+                <ListItem name="Line:" is_green>
+                    {current_line.MFGLIN}
+                </ListItem>
                 <ListItem name="Product:" is_green>
                     {current_line.ITMREF}
                 </ListItem>
@@ -159,10 +164,31 @@
                 <p class="text-center">No work orders found</p>
             {/if}
 
-            {#if !current_line && lines.length > 1}
-                <SelectInput name="Line">
+            {#if lines.length > 1}
+                <SelectInput
+                    name="Line"
+                    on:change={(e) => {
+                        if (!(e.target instanceof HTMLSelectElement)) {
+                            return;
+                        }
+
+                        const line_number = e.target.value;
+
+                        current_line =
+                            lines.find((line) => line.MFGLIN === line_number) ??
+                            null;
+
+                        if (!current_line) {
+                            return;
+                        }
+
+                        tick().then(() => {
+                            focusOnQuantity();
+                        });
+                    }}>
                     {#each lines as line}
-                        <option>{line.ITMREF}</option>
+                        <option value={line.MFGLIN}
+                            >{line.MFGLIN} - {line.ITMREF}</option>
                     {/each}
                 </SelectInput>
             {/if}
