@@ -12,9 +12,9 @@ use Modules\ProductionReporting\WebServices\WorkOrderWebService;
 
 class ProductionReportingController extends Controller
 {
-    public function index(): Response
+    public function index(WorkOrderWebService $webService): Response
     {
-        $work_orders = WorkOrderWebService::all(auth()->user()->site);
+        $work_orders = $webService->all(auth()->user()->site);
 
         return render('Index', [
             'work_orders' => $work_orders,

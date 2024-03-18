@@ -14,7 +14,7 @@ class WorkOrderWebService
     /*
      * @return Collection<WorkOrderDTO>
      */
-    public static function all(string $site): Collection
+    public function all(string $site): Collection
     {
         $response = WebService::new()
             ->withParams([
