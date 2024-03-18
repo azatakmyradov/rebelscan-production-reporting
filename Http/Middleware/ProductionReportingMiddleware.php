@@ -14,26 +14,34 @@ class ProductionReportingMiddleware extends ModuleMiddleware
      * Module name
      *
      * This is used to register the module name in the app container
+     *
+     * @var string
      */
     protected string $moduleName = 'ProductionReporting';
 
     /**
-     * Handle the middleware
+     * Routes that this module depends on
+     *
+     * @var array
      */
-    public function handle(Request $request, $next): mixed
+    protected array $dependsOnRoutes = [
+        'work-orders.show',
+    ];
+
+    /**
+     * Service provider that provides the language files
+     */
+    public function languageProvider(): string
     {
-        // [Load translations]
-        $provider = app()->resolveProvider(ProductionReportingServiceProvider::class);
-        $provider->loadTranslations();
-
-        // [Register app name]
-        app()->bind('module', fn () => $this->moduleName);
-
-        return parent::handle($request, $next);
+        return ProductionReportingServiceProvider::class;
     }
 
+    /**
+     * Merge the language files
+     */
     public function share(Request $request): array
     {
         return $this->mergeLanguageFiles($request, __DIR__);
     }
 }
+

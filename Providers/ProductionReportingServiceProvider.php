@@ -8,31 +8,34 @@ use App\Providers\BaseServiceProvider;
 
 class ProductionReportingServiceProvider extends BaseServiceProvider
 {
-    public function register(): void
-    {
-        //
-    }
-
-    public function boot(): void
-    {
-        $this->loadMigrationsFrom(__DIR__.'/../Migrations');
-
-        $this->app->register(RouteServiceProvider::class);
-
-        $this->addHomeLink(
-            can: 'use production-reporting',
-            name: 'Production Reporting',
-            route: 'production-reporting.index',
-        );
-
-        $this->addPermission('use production-reporting');
-    }
+    /**
+     * The path to the module
+     */
+    protected string $module_path = __DIR__;
 
     /**
-     * Load the translations
+     * The home links for the module
      */
-    public function loadTranslations(): void
+    protected array $home_links = [
+        [
+            'name' => 'Production Reporting',
+            'route' => 'production-reporting.index',
+            'can' => 'use production-reporting',
+        ]
+    ];
+
+    /**
+     * The permissions for the module
+     */
+    protected array $permissions = [
+        'use production-reporting',
+    ];
+
+    /**
+     * The route provider for the module
+     */
+    public function routeProvider(): string
     {
-        $this->loadJsonTranslationsFrom(__DIR__.'/../lang');
+        return RouteServiceProvider::class;
     }
 }

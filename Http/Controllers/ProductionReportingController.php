@@ -7,8 +7,9 @@ namespace Modules\ProductionReporting\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Inertia\Response;
+use Modules\General\WebServices\WorkOrderWebService;
 use Modules\ProductionReporting\DTO\ProductionReportingDTO;
-use Modules\ProductionReporting\WebServices\WorkOrderWebService;
+use Modules\ProductionReporting\WebServices\ProductionReportingWebService;
 
 class ProductionReportingController extends Controller
 {
@@ -21,7 +22,7 @@ class ProductionReportingController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function store(Request $request, ProductionReportingWebService $productionTrackingWebService): void
     {
         $attributes = $request->validate([
             'MFGNUM' => ['required'],
@@ -37,7 +38,7 @@ class ProductionReportingController extends Controller
 
         $attributes = ProductionReportingDTO::fromArray($attributes);
 
-        WorkOrderWebService::submit(
+        $productionTrackingWebService->submit(
             site: auth()->user()->site,
             attributes: $attributes->toArray('I_')
         );
