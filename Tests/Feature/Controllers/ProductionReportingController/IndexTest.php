@@ -1,8 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\ProductionReporting\Tests\Feature\Controllers\ProductionReportingController;
 
 use Illuminate\Support\Facades\Auth;
+
 use function Pest\Laravel\get;
 
 uses(\Tests\TestCase::class);

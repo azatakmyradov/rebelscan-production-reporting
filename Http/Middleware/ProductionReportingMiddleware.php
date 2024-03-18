@@ -14,15 +14,11 @@ class ProductionReportingMiddleware extends ModuleMiddleware
      * Module name
      *
      * This is used to register the module name in the app container
-     *
-     * @var string
      */
     protected string $moduleName = 'ProductionReporting';
 
     /**
      * Routes that this module depends on
-     *
-     * @var array
      */
     protected array $dependsOnRoutes = [
         'work-orders.show',
@@ -44,4 +40,3 @@ class ProductionReportingMiddleware extends ModuleMiddleware
         return $this->mergeLanguageFiles($request, __DIR__);
     }
 }
-

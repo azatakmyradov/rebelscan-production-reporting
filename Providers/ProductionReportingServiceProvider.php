@@ -21,7 +21,7 @@ class ProductionReportingServiceProvider extends BaseServiceProvider
             'name' => 'Production Reporting',
             'route' => 'production-reporting.index',
             'can' => 'use production-reporting',
-        ]
+        ],
     ];
 
     /**
