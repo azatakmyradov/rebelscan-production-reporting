@@ -17,7 +17,7 @@ it('should return correct component', function () {
         'PARAM_STAT' => [
             'O_STAT' => 1,
             'O_MESSAGE' => '',
-        ]
+        ],
     ]);
 
     get('/production-reporting')
@@ -32,7 +32,7 @@ it('should pass correct props', function () {
         'PARAM_STAT' => [
             'O_STAT' => 1,
             'O_MESSAGE' => '',
-        ]
+        ],
     ]);
 
     get('/production-reporting')
