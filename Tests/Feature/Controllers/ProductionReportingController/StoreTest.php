@@ -36,8 +36,8 @@ it('validates required props', function (array $data) {
             'UOM' => '123',
             'QTY' => '123',
             'ITMREF' => '123',
-        ]
-    ]
+        ],
+    ],
 ]);
 
 it('redirects back after submitting', function (array $data) {
@@ -61,5 +61,5 @@ it('redirects back after submitting', function (array $data) {
             'SERNUM' => '',
             'PALNUM' => '',
         ],
-    ]
+    ],
 ]);
