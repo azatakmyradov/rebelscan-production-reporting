@@ -6,10 +6,13 @@ namespace Modules\ProductionReporting\Tests\Feature\Controllers\ProductionReport
 
 use function Pest\Laravel\actingAs;
 use function Pest\Laravel\get;
+use function Pest\Laravel\seed;
 
 uses(\Tests\TestCase::class);
 
 it('should return correct component', function () {
+    seed('SettingsSeeder');
+
     actingAs(createAdmin());
 
     fakeHttp([
@@ -25,6 +28,8 @@ it('should return correct component', function () {
 });
 
 it('should pass correct props', function () {
+    seed('SettingsSeeder');
+
     actingAs(createAdmin());
 
     fakeHttp([
