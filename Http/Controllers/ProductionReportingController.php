@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\ProductionReporting\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Inertia\Response;
 use Modules\General\WebServices\WorkOrderWebService;
@@ -22,7 +23,7 @@ class ProductionReportingController extends Controller
         ]);
     }
 
-    public function store(Request $request, ProductionReportingWebService $productionTrackingWebService): void
+    public function store(Request $request, ProductionReportingWebService $productionTrackingWebService): RedirectResponse
     {
         $attributes = $request->validate([
             'MFGNUM' => ['required'],
@@ -43,7 +44,7 @@ class ProductionReportingController extends Controller
             attributes: $attributes->toArray('I_')
         );
 
-        back()
+        return back()
             ->with([
                 'message' => 'Production Reporting submitted',
             ]);
